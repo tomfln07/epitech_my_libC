@@ -96,12 +96,12 @@ char *print_float(
     double decimals_left = 0;
     int is_neg = 0;
 
+    is_neg = detect_neg(&nbr);
     if (nbr == INFINITY || nbr == - INFINITY) {
         put_infinity(str, double_to_str, str_i, nbr);
     } else {
         int_left = (int)nbr;
         decimals_left = nbr - (int)nbr;
-        is_neg = detect_neg(&nbr);
         get_int_part(double_to_str, nbr, &i, int_left);
         put_neg(double_to_str, is_neg, &i);
         my_revstr(double_to_str);

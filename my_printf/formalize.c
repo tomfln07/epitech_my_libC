@@ -119,5 +119,4 @@ void formalize(args_t args, char type, char *buff, int *printed)
     my_revstr(buff);
     my_putstr(buff);
     *printed += my_strlen(buff);
-    free(buff);
 }
