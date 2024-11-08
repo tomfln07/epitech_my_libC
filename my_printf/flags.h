@@ -22,6 +22,6 @@ struct args {
     int precision;
 };
 typedef struct args args_t;
-flags_t get_flags(char *str, int *i_offset);
+void get_flags(char *str, int *i_offset, args_t *args);
 void formalize(args_t args, char type, char *buff, int *printed);
 #endif

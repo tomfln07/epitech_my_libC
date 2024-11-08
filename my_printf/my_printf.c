@@ -75,13 +75,13 @@ int get_precision(const char *str, int str_i, int *i_offset)
 static int print_flag(
     const char *str, int str_i, va_list args_list, int *printed)
 {
-    args_t args;
+    args_t args = { 0 };
     int i_offset = 1;
     char *str_to_serialize = NULL;
 
     if (my_strlen(str) <= str_i + i_offset)
         return 0;
-    args.flags = get_flags((char *)(str + str_i), &i_offset);
+    get_flags((char *)(str + str_i), &i_offset, &args);
     args.min_width = get_min_field_width(str, str_i + i_offset, &i_offset);
     args.precision = get_precision(str, str_i + i_offset, &i_offset);
     for (int i = 0; i < NBR_SPECIFIERS; i++) {

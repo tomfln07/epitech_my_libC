@@ -10,10 +10,9 @@
 #include "conversion_specifiers.h"
 #include <stdio.h>
 
-flags_t get_flags(char *str, int *i_offset)
+void get_flags(char *str, int *i_offset, args_t *args)
 {
     int str_len = my_strlen(str);
-    flags_t flags = { 0 };
 
     for (int i = 1; i < str_len; i++) {
         if (str[i] != '#' && str[i] != '0'
@@ -21,15 +20,14 @@ flags_t get_flags(char *str, int *i_offset)
             break;
         *i_offset += 1;
         if (str[i] == '#')
-            flags.hashtag = 1;
+            args->flags.hashtag = 1;
         if (str[i] == '0')
-            flags.zero = 1;
+            args->flags.zero = 1;
         if (str[i] == '-')
-            flags.minus = 1;
+            args->flags.minus = 1;
         if (str[i] == ' ')
-            flags.space = 1;
+            args->flags.space = 1;
         if (str[i] == '+')
-            flags.plus = 1;
+            args->flags.plus = 1;
     }
-    return flags;
 }
